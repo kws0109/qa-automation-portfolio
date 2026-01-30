@@ -19,7 +19,7 @@ export default function Architecture() {
         </motion.div>
 
         {/* Architecture Diagram */}
-        <div className="mb-12">
+        <div className="mb-12 overflow-visible">
           <ArchitectureDiagram />
         </div>
 

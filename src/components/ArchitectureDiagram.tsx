@@ -33,8 +33,8 @@ const LayerLabel = ({ children, color }: { children: React.ReactNode; color: str
 
 export default function ArchitectureDiagram() {
   return (
-    <div className="relative bg-mantle rounded-xl border border-surface0 p-6 overflow-x-auto">
-      <div className="min-w-[700px] space-y-4">
+    <div className="relative bg-mantle rounded-xl border border-surface0 p-4 md:p-6 overflow-visible">
+      <div className="space-y-4">
 
         {/* Clients Layer */}
         <motion.div
