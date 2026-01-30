@@ -1,17 +1,7 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-
-type Layer = 'all' | 'frontend' | 'backend' | 'automation'
+import ArchitectureDiagram from '../components/ArchitectureDiagram'
 
 export default function Architecture() {
-  const [activeLayer, setActiveLayer] = useState<Layer>('all')
-
-  const layers: { id: Layer; label: string; color: string }[] = [
-    { id: 'all', label: 'All Layers', color: 'bg-surface1' },
-    { id: 'frontend', label: 'Frontend', color: 'bg-blue' },
-    { id: 'backend', label: 'Backend', color: 'bg-green' },
-    { id: 'automation', label: 'Automation', color: 'bg-peach' },
-  ]
 
   return (
     <div className="min-h-screen py-16">
@@ -28,107 +18,10 @@ export default function Architecture() {
           </p>
         </motion.div>
 
-        {/* Layer Filter */}
-        <div className="flex justify-center gap-2 mb-12">
-          {layers.map((layer) => (
-            <button
-              key={layer.id}
-              onClick={() => setActiveLayer(layer.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeLayer === layer.id
-                  ? `${layer.color} text-base`
-                  : 'bg-surface0 text-subtext1 hover:bg-surface1'
-              }`}
-            >
-              {layer.label}
-            </button>
-          ))}
-        </div>
-
         {/* Architecture Diagram */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="bg-mantle rounded-xl border border-surface0 p-8 mb-12 overflow-x-auto"
-        >
-          <pre className="font-mono text-sm text-subtext1 leading-relaxed">
-{`
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                                   CLIENTS                                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │   Browser    │  │   Browser    │  │   Browser    │  │  Server Mgr  │         │
-│  │   (User A)   │  │   (User B)   │  │   (User C)   │  │  (Electron)  │         │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘         │
-└─────────┼──────────────────┼──────────────────┼──────────────────┼───────────────┘
-          │                  │                  │                  │
-          └──────────────────┴────────┬─────────┴──────────────────┘
-                                      │
-┌─────────────────────────────────────┴───────────────────────────────────────────┐
-│                              FRONTEND (React)                                    │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌───────────┐  │
-│  │ FlowEditor  │ │  Device     │ │ Execution   │ │  Report     │ │ Schedule  │  │
-│  │  Context    │ │  Dashboard  │ │   Center    │ │   Viewer    │ │  Manager  │  │
-│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘ └───────────┘  │
-│                                      │                                           │
-│  ┌───────────────────────────────────┴───────────────────────────────────────┐  │
-│  │                    Socket.IO Client + REST API                             │  │
-│  └───────────────────────────────────┬───────────────────────────────────────┘  │
-└──────────────────────────────────────┼──────────────────────────────────────────┘
-                                       │
-          ┌────────────────────────────┴────────────────────────────┐
-          │ HTTP :3001                              WebSocket :3001 │
-          ▼                                                         ▼
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              BACKEND (Node.js)                                   │
-│                                                                                  │
-│  ┌─────────────────────────────────────────────────────────────────────────┐    │
-│  │                           Express Routes                                 │    │
-│  │  /api/device  /api/session  /api/scenario  /api/schedule  /api/reports  │    │
-│  └─────────────────────────────────┬───────────────────────────────────────┘    │
-│                                    │                                             │
-│  ┌─────────────────────────────────┴───────────────────────────────────────┐    │
-│  │                              Services                                    │    │
-│  │ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐     │    │
-│  │ │ testExecutor │ │ suiteExecutor│ │testOrchestrator│deviceLockSvc │     │    │
-│  │ └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘     │    │
-│  │ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐     │    │
-│  │ │sessionManager│ │ imageMatch   │ │  ocrService  │ │ scheduleManager   │    │
-│  │ └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘     │    │
-│  └─────────────────────────────────┬───────────────────────────────────────┘    │
-│                                    │                                             │
-│  ┌─────────────────────────────────┴───────────────────────────────────────┐    │
-│  │                         Execution Module                                 │    │
-│  │ ┌────────────────┐ ┌────────────────┐ ┌────────────────┐                │    │
-│  │ │ExecutionState  │ │ ActionExecution│ │ NodeNavigation │                │    │
-│  │ │   Manager      │ │    Service     │ │    Service     │                │    │
-│  │ └────────────────┘ └────────────────┘ └────────────────┘                │    │
-│  └─────────────────────────────────────────────────────────────────────────┘    │
-└────────────────────────────────────┬────────────────────────────────────────────┘
-                                     │
-          ┌──────────────────────────┴──────────────────────────┐
-          │ WebDriver Protocol :4900                             │
-          ▼                                                      │
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              APPIUM SERVER                                       │
-│  ┌─────────────────────────────────────────────────────────────────────────┐    │
-│  │                         UiAutomator2 Driver                              │    │
-│  └─────────────────────────────────────────────────────────────────────────┘    │
-│                                     │                                            │
-└─────────────────────────────────────┼────────────────────────────────────────────┘
-                                      │
-          ┌───────────────────────────┴───────────────────────────┐
-          │ ADB (USB/Network)                                     │
-          ▼                                                       ▼
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              ANDROID DEVICES                                     │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐        ┌──────────────┐     │
-│  │  Device 1    │ │  Device 2    │ │  Device 3    │  ...   │  Device 50   │     │
-│  │  (Galaxy)    │ │  (Pixel)     │ │  (Xiaomi)    │        │  (OnePlus)   │     │
-│  └──────────────┘ └──────────────┘ └──────────────┘        └──────────────┘     │
-└─────────────────────────────────────────────────────────────────────────────────┘
-`}
-          </pre>
-        </motion.div>
+        <div className="mb-12">
+          <ArchitectureDiagram />
+        </div>
 
         {/* Component Details */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -136,11 +29,7 @@ export default function Architecture() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className={`p-6 rounded-xl border transition-opacity ${
-              activeLayer === 'all' || activeLayer === 'frontend'
-                ? 'bg-blue/10 border-blue/30 opacity-100'
-                : 'bg-mantle border-surface0 opacity-50'
-            }`}
+            className="p-6 rounded-xl border bg-blue/10 border-blue/30"
           >
             <h3 className="text-lg font-semibold text-blue mb-4">Frontend</h3>
             <ul className="space-y-2 text-sm text-subtext1">
@@ -157,11 +46,7 @@ export default function Architecture() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className={`p-6 rounded-xl border transition-opacity ${
-              activeLayer === 'all' || activeLayer === 'backend'
-                ? 'bg-green/10 border-green/30 opacity-100'
-                : 'bg-mantle border-surface0 opacity-50'
-            }`}
+            className="p-6 rounded-xl border bg-green/10 border-green/30"
           >
             <h3 className="text-lg font-semibold text-green mb-4">Backend</h3>
             <ul className="space-y-2 text-sm text-subtext1">
@@ -178,11 +63,7 @@ export default function Architecture() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className={`p-6 rounded-xl border transition-opacity ${
-              activeLayer === 'all' || activeLayer === 'automation'
-                ? 'bg-peach/10 border-peach/30 opacity-100'
-                : 'bg-mantle border-surface0 opacity-50'
-            }`}
+            className="p-6 rounded-xl border bg-peach/10 border-peach/30"
           >
             <h3 className="text-lg font-semibold text-peach mb-4">Automation</h3>
             <ul className="space-y-2 text-sm text-subtext1">
