@@ -90,10 +90,10 @@ const phases: Phase[] = [
   },
   {
     id: 'current',
-    title: 'Current: Enterprise Features',
+    title: 'Current: 추가 기능 개발',
     date: '2026-01-30',
     status: 'current',
-    description: '엔터프라이즈 기능 추가',
+    description: '운영 편의 기능 추가',
     highlights: [
       'Suite 실행 시스템',
       '디바이스 잠금 & 대기열',

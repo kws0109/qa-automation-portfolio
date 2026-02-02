@@ -127,7 +127,7 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-text mb-4">Key Features</h2>
-            <p className="text-subtext1">엔터프라이즈급 QA 자동화를 위한 핵심 기능</p>
+            <p className="text-subtext1">모바일 게임 QA 자동화를 위한 주요 기능</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (

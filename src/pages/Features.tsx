@@ -190,7 +190,7 @@ export default function Features() {
         >
           <h1 className="text-4xl font-bold text-text mb-4">Features</h1>
           <p className="text-xl text-subtext1 max-w-2xl mx-auto">
-            엔터프라이즈급 QA 자동화를 위한 종합 기능 세트
+            모바일 게임 QA 자동화를 위한 주요 기능
           </p>
         </motion.div>
 
