@@ -103,13 +103,15 @@ export default function Home() {
                 <Github className="w-5 h-5" />
                 GitHub
               </a>
-              <Link
-                to="/docs"
+              <a
+                href="https://github.com/kws0109/QA_Automation/wiki"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-surface0 text-text font-semibold rounded-lg hover:bg-surface1 transition-colors"
               >
                 <BookOpen className="w-5 h-5" />
                 Documentation
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
