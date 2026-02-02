@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, X, Play } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 interface Screenshot {
   id: number
@@ -81,7 +81,7 @@ export default function Demo() {
           </p>
         </motion.div>
 
-        {/* Video Demo Placeholder */}
+        {/* Video Demo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,18 +89,15 @@ export default function Demo() {
           className="mb-16"
         >
           <h2 className="text-2xl font-bold text-text mb-6">Video Demo</h2>
-          <div className="aspect-video bg-mantle rounded-xl border border-surface0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-surface0 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-surface1 transition-colors">
-                <Play className="w-10 h-10 text-mauve ml-1" />
-              </div>
-              <p className="text-subtext0">
-                데모 비디오 준비 중...
-              </p>
-              <p className="text-sm text-subtext0 mt-2">
-                스크린샷을 먼저 확인해 보세요 👇
-              </p>
-            </div>
+          <div className="aspect-video bg-mantle rounded-xl border border-surface0 overflow-hidden">
+            <video
+              className="w-full h-full object-contain"
+              controls
+              poster={`${BASE_URL}screenshots/Node_Editor.png`}
+            >
+              <source src={`${BASE_URL}screenshots/Demo.mp4`} type="video/mp4" />
+              브라우저가 비디오를 지원하지 않습니다.
+            </video>
           </div>
         </motion.div>
 
