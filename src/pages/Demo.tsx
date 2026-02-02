@@ -6,7 +6,7 @@ interface Screenshot {
   id: number
   title: string
   description: string
-  placeholder: string
+  image: string
 }
 
 const screenshots: Screenshot[] = [
@@ -14,31 +14,37 @@ const screenshots: Screenshot[] = [
     id: 1,
     title: 'Flow Editor',
     description: '드래그 앤 드롭으로 테스트 시나리오 작성',
-    placeholder: '🎨 Flow Editor 스크린샷',
+    image: '/screenshots/Node_Editor.png',
   },
   {
     id: 2,
     title: 'Device Dashboard',
     description: '연결된 디바이스 실시간 모니터링',
-    placeholder: '📱 Device Dashboard 스크린샷',
+    image: '/screenshots/Device Dashborad.png',
   },
   {
     id: 3,
     title: 'Execution Center',
     description: '테스트 실행 및 진행 상황 확인',
-    placeholder: '▶️ Execution Center 스크린샷',
+    image: '/screenshots/Execution.png',
   },
   {
     id: 4,
     title: 'Report Viewer',
     description: '비디오 타임라인과 스크린샷 갤러리',
-    placeholder: '📊 Report Viewer 스크린샷',
+    image: '/screenshots/report_1.png',
   },
   {
     id: 5,
+    title: 'Report Details',
+    description: '상세 테스트 결과 및 로그 분석',
+    image: '/screenshots/report_2.png',
+  },
+  {
+    id: 6,
     title: 'Schedule Manager',
     description: 'Cron 기반 예약 실행 관리',
-    placeholder: '⏰ Schedule Manager 스크린샷',
+    image: '/screenshots/Schedule.png',
   },
 ]
 
@@ -115,9 +121,11 @@ export default function Demo() {
                 className="group cursor-pointer"
               >
                 <div className="aspect-video bg-mantle rounded-xl border border-surface0 overflow-hidden mb-3 group-hover:border-mauve/50 transition-colors">
-                  <div className="w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-surface0 to-surface1">
-                    {screenshot.placeholder}
-                  </div>
+                  <img
+                    src={screenshot.image}
+                    alt={screenshot.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <h3 className="font-semibold text-text group-hover:text-mauve transition-colors">
                   {screenshot.title}
@@ -166,8 +174,12 @@ export default function Demo() {
               onClick={(e) => e.stopPropagation()}
               className="max-w-5xl w-full mx-4"
             >
-              <div className="aspect-video bg-mantle rounded-xl border border-surface0 flex items-center justify-center text-6xl">
-                {screenshots[selectedIndex].placeholder}
+              <div className="bg-mantle rounded-xl border border-surface0 overflow-hidden">
+                <img
+                  src={screenshots[selectedIndex].image}
+                  alt={screenshots[selectedIndex].title}
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                />
               </div>
               <div className="mt-4 text-center">
                 <h3 className="text-xl font-semibold text-text">
