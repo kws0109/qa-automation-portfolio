@@ -194,7 +194,7 @@ export default function ArchitectureDiagram() {
               📱 Xiaomi
             </Box>
             <Box className="bg-surface0 border border-surface1 text-subtext0" delay={1.0}>
-              ... 50+ devices
+              ... 10 devices
             </Box>
           </div>
         </motion.div>

@@ -16,7 +16,7 @@ const features = [
   {
     icon: Smartphone,
     title: 'Multi-Device',
-    description: '50+ 디바이스 동시 연결 및 병렬 테스트 실행',
+    description: '10대 디바이스 동시 연결 및 병렬 테스트 실행',
     color: 'text-blue',
   },
   {

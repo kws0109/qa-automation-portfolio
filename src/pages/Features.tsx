@@ -22,7 +22,7 @@ const featureCategories = [
       {
         icon: Smartphone,
         title: 'Multi-Device Support',
-        description: '50+ Android 디바이스 동시 연결',
+        description: '10대 Android 디바이스 동시 연결',
         details: [
           'ADB를 통한 자동 디바이스 탐지',
           '디바이스별 세션 관리 (SessionManager)',
