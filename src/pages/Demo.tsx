@@ -9,42 +9,44 @@ interface Screenshot {
   image: string
 }
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const screenshots: Screenshot[] = [
   {
     id: 1,
     title: 'Flow Editor',
     description: '드래그 앤 드롭으로 테스트 시나리오 작성',
-    image: '/screenshots/Node_Editor.png',
+    image: `${BASE_URL}screenshots/Node_Editor.png`,
   },
   {
     id: 2,
     title: 'Device Dashboard',
     description: '연결된 디바이스 실시간 모니터링',
-    image: '/screenshots/Device Dashborad.png',
+    image: `${BASE_URL}screenshots/Device Dashborad.png`,
   },
   {
     id: 3,
     title: 'Execution Center',
     description: '테스트 실행 및 진행 상황 확인',
-    image: '/screenshots/Execution.png',
+    image: `${BASE_URL}screenshots/Execution.png`,
   },
   {
     id: 4,
     title: 'Report Viewer',
     description: '비디오 타임라인과 스크린샷 갤러리',
-    image: '/screenshots/report_1.png',
+    image: `${BASE_URL}screenshots/report_1.png`,
   },
   {
     id: 5,
     title: 'Report Details',
     description: '상세 테스트 결과 및 로그 분석',
-    image: '/screenshots/report_2.png',
+    image: `${BASE_URL}screenshots/report_2.png`,
   },
   {
     id: 6,
     title: 'Schedule Manager',
     description: 'Cron 기반 예약 실행 관리',
-    image: '/screenshots/Schedule.png',
+    image: `${BASE_URL}screenshots/Schedule.png`,
   },
 ]
 
