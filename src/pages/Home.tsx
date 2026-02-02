@@ -67,7 +67,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-mauve/10 via-transparent to-blue/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-mauve/10 via-transparent to-blue/10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
