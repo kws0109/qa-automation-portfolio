@@ -138,21 +138,6 @@ export default function Demo() {
           </div>
         </motion.div>
 
-        {/* How to Add Screenshots Notice */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 p-6 bg-surface0/50 rounded-xl border border-surface0"
-        >
-          <h3 className="font-semibold text-text mb-2">📸 스크린샷 추가 방법</h3>
-          <ol className="list-decimal list-inside text-sm text-subtext1 space-y-1">
-            <li>프로젝트 실행 후 각 화면 스크린샷 촬영</li>
-            <li><code className="bg-surface0 px-1 rounded">public/screenshots/</code> 폴더에 저장</li>
-            <li><code className="bg-surface0 px-1 rounded">Demo.tsx</code>에서 이미지 경로 업데이트</li>
-            <li>라이브 데모 GIF 추가 시 <code className="bg-surface0 px-1 rounded">ScreenToGif</code> 추천</li>
-          </ol>
-        </motion.div>
       </div>
 
       {/* Lightbox */}

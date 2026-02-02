@@ -18,7 +18,7 @@ export default function Footer() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:kws0553@gmail.com"
               className="text-subtext0 hover:text-lavender transition-colors"
             >
               <Mail className="w-5 h-5" />
